@@ -1,7 +1,7 @@
 state("hod3pc")
 {
     int chapterNumber: 0x0000656C, 0x0;
-    int menuValue: 0x003DE800, 0x64, 0xC8C;
+    int menuValue: 0x003DE7A0, 0x64, 0x30C;
     float IGT: 0x00310D58, 0x234;
 }
 
