@@ -1,27 +1,37 @@
 state("hod3pc")
 {
-    int chapterNumber: 0x0000656C, 0x0;
-    int menuValue: 0x001E5040, 0x38, 0x8, 0x84C;
-    //float IGT: 0x00310D58, 0x234;
+    int chapterNumber: "hod3pc.exe", 0x3B8B60;
+    byte menuValue: "hod3pc.exe", 0x366748;
+    float IGT: "hod3pc.exe", 0x3B7FF4;
+    int boss5Death: "hod3pc.exe", 0x306FD0;
+    int roomboss5: "hod3pc.exe", 0x306FA0;
 }
 
 start 
 {
-    if(current.menuValue != 0){
-        return true;
-    }
+   return current.menuValue == 1 && old.menuValue == 0;
 }
 
 split
 {
-    if(current.chapterNumber > old.chapterNumber){
-        return true;
-    }
+    return( 
+        (current.chapterNumber != old.chapterNumber) ||
+        (current.chapterNumber == 5 && current.boss5Death < 1 && old.boss5Death > 1)
+    );
+    
 }
 
 reset
 {
- if(current.menuValue == 0){
+    return current.menuValue == 0 && old.menuValue == 1;
+}
+
+isLoading
+{
+    if(current.IGT == old.IGT){
         return true;
+    } else {
+        return false;
     }
 }
+
