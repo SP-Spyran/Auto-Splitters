@@ -31,7 +31,6 @@ split
         (current.chapterChange != old.chapterChange) ||
         (current.FinalRoom == 4 && current.BossHP < 1 && old.BossHP > 1)
     );
-    3
 }
 
 /*
@@ -45,5 +44,6 @@ isLoading
         return false;
     }
 } */
+
 
 
